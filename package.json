@@ -1,0 +1,18 @@
+{
+  "name": "rbac-docs",
+  "version": "1.0.0",
+  "description": "rbac docs",
+  "main": "index.js",
+  "repository": "https://github.com/hezhongfeng/rbac-docs.git",
+  "author": "hezhongfeng <287645587@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.4",
+    "vue": "^3.2.37"
+  }
+}
