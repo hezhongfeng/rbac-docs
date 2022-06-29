@@ -4,11 +4,8 @@ export default {
   themeConfig: {
     sidebar: [
       {
-        text: 'Guide',
-        items: [
-          { text: 'Introduction', link: '/introduction' },
-          { text: 'Getting Started', link: '/getting-started' }
-        ]
+        text: '环境准备',
+        items: [{ text: '开发环境准备', link: '/1-开发环境准备' }]
       }
     ]
   }
