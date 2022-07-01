@@ -5,7 +5,7 @@ export default {
     sidebar: [
       {
         text: '环境准备',
-        items: [{ text: '开发环境准备', link: '/1-开发环境准备' }]
+        link: '/1-开发环境准备'
       }
     ]
   }
