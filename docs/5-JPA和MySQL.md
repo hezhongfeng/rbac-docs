@@ -1,8 +1,10 @@
+# JPA 和 MySQL
+
 上一节我们讲了 RBAC 的模型关系和优点，这节来完成数据库的添加和初始化
 
-Spring Data JPA 是官方提出的 Java 持久化规范（也就是针对数据库的操作）， 它为 Java 开发人员提供了一种对象/关联映射工具来管理 Java 应用中的关系数据，可使开发者用极简的代码即可实现对数据的访问和操作。具体的Hibernate，TopLink，JDO 等 ORM框架可以自己选择，咱们这里就使用默认的 Hibernate，数据库用 MySQL
+Spring Data JPA 是官方提出的 Java 持久化规范（也就是针对数据库的操作）， 它为 Java 开发人员提供了一种对象/关联映射工具来管理 Java 应用中的关系数据，可使开发者用极简的代码即可实现对数据的访问和操作。具体的 Hibernate，TopLink，JDO 等 ORM 框架可以自己选择，咱们这里就使用默认的 Hibernate，数据库用 MySQL
 
-## 添加JPA和Mysql
+## 添加 JPA 和 Mysql
 
 在 build.gradle 文件添加
 
@@ -33,7 +35,7 @@ spring:
       ddl-auto: update # 指定为update，每次启动项目检测表结构有变化的时候会新增字段，表不存在时会新建
 ```
 
-添加成功后启动项目，会发现启动的log增加了一些 JPA 相关的数据：
+添加成功后启动项目，会发现启动的 log 增加了一些 JPA 相关的数据：
 
 ```
 2022-06-08 14:28:05.012  INFO 5173 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
@@ -49,6 +51,7 @@ spring:
 ## 添加实体
 
 在 `src/main/java/com/example/rbac/entity` 新建 Permission.java 文件，并写入下面的内容：
+
 ```
 package com.example.rbac.entity;
 
@@ -167,7 +170,7 @@ public class Permission {
 
 ```
 
-注意上面构造函数、getter、setter和toString 都可以通过鼠标右键选择`JAVA CODE Generators` 去生成
+注意上面构造函数、getter、setter 和 toString 都可以通过鼠标右键选择`JAVA CODE Generators` 去生成
 
 > Role.java
 

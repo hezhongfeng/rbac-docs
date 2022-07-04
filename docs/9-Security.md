@@ -1,3 +1,5 @@
+# Security
+
 Security 是 spring boot 提供的安全认证方面的集合，对于一个管理端，想要完成的有以下方面：
 
 1. 登录：登录成功后，后端颁发访问的凭证
@@ -14,7 +16,7 @@ Security 是 spring boot 提供的安全认证方面的集合，对于一个管�
 
 ## Security 配置
 
-Spring Boot 2.7.0 刚刚发布，Spring Security 也升级到了5.7.1，目前 WebSecurityConfigurerAdapter 已经弃用了，不推荐继承它来进行配置
+Spring Boot 2.7.0 刚刚发布，Spring Security 也升级到了 5.7.1，目前 WebSecurityConfigurerAdapter 已经弃用了，不推荐继承它来进行配置
 
 新用法是通过生成 SecurityFilterChainBean 的方法来进行配置：
 
@@ -49,6 +51,7 @@ public class SecurityConfig {
 }
 
 ```
+
 这样配置后，我们尝试访问 `http://localhost:8080/` 已经允许我们访问了，只是会报错说没有配置路由，这里可以配置下路由看看效果
 
 然后再访问 `http://localhost:8080/api/admin/v1/permissions` 这时候跳转到了登录页，输入上面的帐户 user 和密码 password 后，又跳回了我们的接口地址，可以访问了，说明我们输入上面配置的帐户密码后变为了认证通过
@@ -61,7 +64,7 @@ public class SecurityConfig {
 
 jwt 是有有效期的，过期了就无法通过验证。一般来讲，jwt 是无状态的认证机制，不需要像 session 一样存在后端，可以说一经颁发在有效期内就会永久有效。
 
-jjwt的[项目地址](https://github.com/jwtk/jjwt)
+jjwt 的[项目地址](https://github.com/jwtk/jjwt)
 
 到这里需要我们添加生成和验证 jwt 所需的依赖 `implementation 'io.jsonwebtoken:jjwt:0.9.1'`，然后在 `application.yml` 添加如下的配置：
 

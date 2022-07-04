@@ -1,4 +1,6 @@
-在上一节我们设计了API，还有规范了一些通用的参数格式，这节我们来实现API
+# API 实现
+
+在上一节我们设计了 API，还有规范了一些通用的参数格式，这节我们来实现 API
 
 ## 参数校验
 
@@ -11,6 +13,7 @@
 首先，我们来完成权限的创建 API
 
 根据之前权限实体的定义，我门创建的时候需要如下参数：
+
 ```
 private String name;
 
@@ -18,6 +21,7 @@ private String keyName;
 
 private String description;
 ```
+
 在 `src/main/java/com/example/rbac/payload` 下创建文件 `CreatePermissionDto.java`，这个文件是规范创建权限所需的参数的，同时可以进行参数检查，不符合约定的参数，直接返回相应的信息：
 
 ```
@@ -66,7 +70,7 @@ public class CreatePermissionDto {
 
 上面的 NotNull 就是参数校验依赖的功能，完成了创建的接口参数后 ，接下来开始完成接口
 
-在`src/main/java/com/example/rbac/controller`下创建`AdminPermissionController.java`文件，表明这个Controller是给管理员使用的：
+在`src/main/java/com/example/rbac/controller`下创建`AdminPermissionController.java`文件，表明这个 Controller 是给管理员使用的：
 
 ```
 package com.example.rbac.controller;
@@ -96,7 +100,7 @@ public class AdminPermissionController {
 
 ```
 
-注意看 AdminPermissionController 上面的注释，表明了是一个 Restful 接口和监听`/api/admin/v1/permissions`这个路由，里面的第一个方法上的注释表明是接收的 POST 请求，同时前端传来的body中的部分数据，会用来给CreatePermissionDto赋值，这样就可以直接从permissionDto里面取值了，接下来补全一下：
+注意看 AdminPermissionController 上面的注释，表明了是一个 Restful 接口和监听`/api/admin/v1/permissions`这个路由，里面的第一个方法上的注释表明是接收的 POST 请求，同时前端传来的 body 中的部分数据，会用来给 CreatePermissionDto 赋值，这样就可以直接从 permissionDto 里面取值了，接下来补全一下：
 
 ```
 package com.example.rbac.controller;
@@ -177,7 +181,7 @@ public class AdminPermissionController {
 
 ## API 文档
 
-接口部分完成了，我们添加下API文档：
+接口部分完成了，我们添加下 API 文档：
 
 在 build.gradle 添加 `implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'`
 
@@ -203,7 +207,7 @@ public class OpenApiConfig {
 
 ```
 
-然后在Controller添加针对文档的注释：
+然后在 Controller 添加针对文档的注释：
 
 ```
 package com.example.rbac.controller;
@@ -295,4 +299,4 @@ public class AdminPermissionController {
 
 ![](https://s2.loli.net/2022/06/09/LSz9dAEV13Jqwxr.png)
 
-在这里我们只是完成了Controller和参数校验，并没有实际完成和数据库的交互，下一节我们来完成后续的部分
+在这里我们只是完成了 Controller 和参数校验，并没有实际完成和数据库的交互，下一节我们来完成后续的部分

@@ -1,3 +1,5 @@
+# Security 认证过程
+
 上一节我们给部分 API 接口加了需要认证的限制，需要使用内存用户登录后才可以通过认证，接下来我们把内存用户换成真正的用户，使用 jwt 来进行认证：
 
 ## 登录
@@ -35,7 +37,7 @@
   }
 ```
 
-看上面的代码，首先验证帐户和密码，然后通过 JWTProvider 把关键信息加密到 jwt，这个  generateToken的逻辑是这样的：
+看上面的代码，首先验证帐户和密码，然后通过 JWTProvider 把关键信息加密到 jwt，这个 generateToken 的逻辑是这样的：
 
 ```
 public static String generateToken(String subject, List<String> permissions) {
@@ -48,7 +50,7 @@ public static String generateToken(String subject, List<String> permissions) {
 }
 ```
 
-这里把权限 List 给合并成了一个字符串，中间逗号分割，然后加密成了jwt，到这里登录的部分完成了
+这里把权限 List 给合并成了一个字符串，中间逗号分割，然后加密成了 jwt，到这里登录的部分完成了
 
 ## 登录认证
 
@@ -183,7 +185,7 @@ public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint {
 }
 ```
 
-认证成功了，就把解析 jwt 得到的 authentication 存到 security 上下文中，供后续的filter 使用，到这里登录认证的整个过程就完成了
+认证成功了，就把解析 jwt 得到的 authentication 存到 security 上下文中，供后续的 filter 使用，到这里登录认证的整个过程就完成了
 
 ## 权限认证
 
@@ -207,7 +209,7 @@ public class AdminRoleController {
 }
 ```
 
-上面的意思是在访问controller之前，通过权限验证处理器去验证当前用户是否具有这个权限：
+上面的意思是在访问 controller 之前，通过权限验证处理器去验证当前用户是否具有这个权限：
 
 ```
 @Component("rbacAuthorityService")
@@ -232,7 +234,8 @@ public class RbacAuthorityService {
   }
 }
 ```
-验证失败后会到accessDeniedHandler（权限不足）的处理方法：
+
+验证失败后会到 accessDeniedHandler（权限不足）的处理方法：
 
 ```
 @Component
@@ -314,10 +317,10 @@ void addAdmin() {
 
 会创建一个具有 admin 权限的用户 和一个没有权限的普通用户
 
-本节代码变化很多，不涉及核心的改动这里没有讲，建议大家自行下载本节代码进行验证，这时候使用 Talend API Tester  、postman 等工具，先用这俩帐户登录：
+本节代码变化很多，不涉及核心的改动这里没有讲，建议大家自行下载本节代码进行验证，这时候使用 Talend API Tester 、postman 等工具，先用这俩帐户登录：
 
 ![](https://s2.loli.net/2022/06/17/HTWyEFBviIYLVmd.png)
 
-分别拿到jwt后，再继续访问 `/api/v1/current` 和 `/api/admin/v1/permissions` 这些接口，通过修改和切换 jwt 验证下登录认证和权限认证
+分别拿到 jwt 后，再继续访问 `/api/v1/current` 和 `/api/admin/v1/permissions` 这些接口，通过修改和切换 jwt 验证下登录认证和权限认证
 
 ![](https://s2.loli.net/2022/06/17/1G5DvBtxcqiwjug.png)

@@ -1,3 +1,5 @@
+# 添加 web 依赖
+
 上一节由于我们没有监听任何端口，导致程序启动成功后就自己结束了，只能打印个字符串，我们想要程序一直运行下去就要添加 web 依赖
 
 ## 添加 web
@@ -40,19 +42,19 @@ dependencies {
 }
 ```
 
-保存文件后，插件 `Language Support for Java` 会提示我们依赖文件变化了，是否同步配置，我们选择 Now 就可以了，这时候实际上就是开始下载 web 依赖项了 
+保存文件后，插件 `Language Support for Java` 会提示我们依赖文件变化了，是否同步配置，我们选择 Now 就可以了，这时候实际上就是开始下载 web 依赖项了
 
 ![](https://s2.loli.net/2022/05/25/gJcpKTmGFiNB6xo.png)
 
 下载完毕，我们仍然找到 JAVA PROJECTS，下面就有我门刚才导入的项目名称，右键点击 debug
 
-控制台会打印出启动的信息，其中有一条是这样的，就是这个应用在本地的8080端口启动了
+控制台会打印出启动的信息，其中有一条是这样的，就是这个应用在本地的 8080 端口启动了
 
 ```
 Tomcat initialized with port(s): 8080 (http)
 ```
 
-如上所示，Tomcat 在 8080 端口启动监听了，这时候访问本地的 `http://localhost:8080/`，会显示 `Whitelabel Error Page` 这是因为我们没有响应根路由导致的，返回了404
+如上所示，Tomcat 在 8080 端口启动监听了，这时候访问本地的 `http://localhost:8080/`，会显示 `Whitelabel Error Page` 这是因为我们没有响应根路由导致的，返回了 404
 
 启动后 vscode 右上角会出现一个小的工具栏，点击红色的框就可以结束应用的运行
 
@@ -60,7 +62,7 @@ Tomcat initialized with port(s): 8080 (http)
 
 ## 添加 Controller
 
-由于我们没有对根路由有配置或者反馈，导致服务返回了404，下面我们来实现一个 Controller
+由于我们没有对根路由有配置或者反馈，导致服务返回了 404，下面我们来实现一个 Controller
 
 在 `src/main/java/com/example/rbac/helloworld/controller` 新建一个 HelloWorldController.java 文件：
 
@@ -84,4 +86,4 @@ public class HelloWorldController {
 
 完成后重新启动，访问 `http://localhost:8080/`，会显示 `Hello RBAC!`
 
-以上我们就完成了一个最简单的 web 应用，可以称之为 web1.0 吧，只能用做信息展示，web3.0的概念还不错，就是大部分都是割韭菜的，还没遇到真正有实用价值的应用
+以上我们就完成了一个最简单的 web 应用，可以称之为 web1.0 吧，只能用做信息展示，web3.0 的概念还不错，就是大部分都是割韭菜的，还没遇到真正有实用价值的应用

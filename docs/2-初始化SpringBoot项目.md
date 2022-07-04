@@ -1,3 +1,7 @@
+# 初始化 SpringBoot 项目
+
+这节开始新建一个 SpringBoot 项目
+
 ## 新建项目
 
 打开 `https://start.spring.io/` 我们按照如下信息填写
@@ -16,7 +20,7 @@
 
 ## 导入项目
 
-下载好我们在 `https://start.spring.io/` 生成的项目后，需要解压导入到vscode，这里不再赘述
+下载好我们在 `https://start.spring.io/` 生成的项目后，需要解压导入到 vscode，这里不再赘述
 
 导入后，会自动下载所需的各种 Java 包
 
@@ -28,7 +32,7 @@
 
 ![](https://s2.loli.net/2022/06/07/2hDWaHzxKUVjLMw.png)
 
-这里也可以使用 SpringBoot Dashboard，启动成功后会有如下的log
+这里也可以使用 SpringBoot Dashboard，启动成功后会有如下的 log
 
 ```
   .   ____          _            __ _ _
@@ -44,9 +48,9 @@
 2022-06-08 08:41:47.567  INFO 84488 --- [           main] com.example.demo2.Demo2Application       : Started Demo2Application in 0.709 seconds (JVM running for 5.663)
 ```
 
-由于我们只有最最基础的SpringBoot，所以也只是完成了项目的启动，没有监听任何端口，启动成功后就结束了
+由于我们只有最最基础的 SpringBoot，所以也只是完成了项目的启动，没有监听任何端口，启动成功后就结束了
 
-我们可以在main函数（src/main/java/com/example/rbac）里面打印个 Hello RBAC! 来看下，也可以在调试模式下打断点
+我们可以在 main 函数（src/main/java/com/example/rbac）里面打印个 Hello RBAC! 来看下，也可以在调试模式下打断点
 
 ```
 public static void main(String[] args) {

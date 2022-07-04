@@ -1,50 +1,52 @@
-在上一节我们完成了，“用户-角色-权限”的实体创建，以及JPA自动为我们创建的数据库中的表，这节我们来设计下Restful API，用来管理“用户-角色-权限”
+# API 设计和规范
+
+在上一节我们完成了，“用户-角色-权限”的实体创建，以及 JPA 自动为我们创建的数据库中的表，这节我们来设计下 Restful API，用来管理“用户-角色-权限”
 
 ## 创建
 
-| 实体 | 方法 | URI |
-| --- | --- | --- |
+| 实体 | 方法 | URI                       |
+| ---- | ---- | ------------------------- |
 | 权限 | POST | /api/admin/v1/permissions |
-| 角色 | POST | /api/admin/v1/roles |
-| 用户 | POST | /api/admin/v1/users |
+| 角色 | POST | /api/admin/v1/roles       |
+| 用户 | POST | /api/admin/v1/users       |
 
 1. 创建权限的时候，把权限实体所需的属性准备好了，直接放在 body 中就可以
-2. 创建角色的时候，需要选择该角色所需的权限，所以需要一个 permissionIds 数组，用来存储所需的权限Id
+2. 创建角色的时候，需要选择该角色所需的权限，所以需要一个 permissionIds 数组，用来存储所需的权限 Id
 3. 同上，创建的时候需要选择用户的角色，需要一个 roleIds 数组
 
 ## 列表查询
 
-| 实体 | 方法 | URI |
-| --- | --- | --- |
-| 权限 | GET | /api/admin/v1/permissions |
-| 角色 | GET | /api/admin/v1/roles |
-| 用户 | GET | /api/admin/v1/users |
+| 实体 | 方法 | URI                       |
+| ---- | ---- | ------------------------- |
+| 权限 | GET  | /api/admin/v1/permissions |
+| 角色 | GET  | /api/admin/v1/roles       |
+| 用户 | GET  | /api/admin/v1/users       |
 
 列表查询这里需要考虑翻页
 
 ## 单个查询
 
-| 实体 | 方法 | URI |
-| --- | --- | --- |
-| 权限 | GET | /api/admin/v1/permissions/:id |
-| 角色 | GET | /api/admin/v1/roles/:id |
-| 用户 | GET | /api/admin/v1/users/:id |
+| 实体 | 方法 | URI                           |
+| ---- | ---- | ----------------------------- |
+| 权限 | GET  | /api/admin/v1/permissions/:id |
+| 角色 | GET  | /api/admin/v1/roles/:id       |
+| 用户 | GET  | /api/admin/v1/users/:id       |
 
 ## 编辑
 
-| 实体 | 方法 | URI |
-| --- | --- | --- |
-| 权限 | PUT | /api/admin/v1/permissions/:id |
-| 角色 | PUT | /api/admin/v1/roles/:id |
-| 用户 | PUT | /api/admin/v1/users/:id |
+| 实体 | 方法 | URI                           |
+| ---- | ---- | ----------------------------- |
+| 权限 | PUT  | /api/admin/v1/permissions/:id |
+| 角色 | PUT  | /api/admin/v1/roles/:id       |
+| 用户 | PUT  | /api/admin/v1/users/:id       |
 
 ## 删除
 
-| 实体 | 方法 | URI |
-| --- | --- | --- |
+| 实体 | 方法   | URI                       |
+| ---- | ------ | ------------------------- |
 | 权限 | DELETE | /api/admin/v1/permissions |
-| 角色 | DELETE | /api/admin/v1/roles |
-| 用户 | DELETE | /api/admin/v1/users |
+| 角色 | DELETE | /api/admin/v1/roles       |
+| 用户 | DELETE | /api/admin/v1/users       |
 
 删除这里需要考虑检查所删除的对象，有没有被使用：比如想删除某个角色，如果这个角色还仍然被某个用户使用，那么就不应该被删除
 
@@ -268,4 +270,5 @@ public class DeleteListRequest {
 }
 
 ```
+
 下一节我们来具体实现各个接口
