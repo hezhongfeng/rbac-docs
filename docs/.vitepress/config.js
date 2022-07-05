@@ -1,6 +1,6 @@
 export default {
-  title: 'VitePress',
-  description: 'Just playing around.',
+  title: 'SpringBoot RBAC',
+  description: '基础文档',
   themeConfig: {
     sidebar: [
       {
